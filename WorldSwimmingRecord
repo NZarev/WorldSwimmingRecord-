@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class WorldSwimmingRecord {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double recordTime = scanner.nextDouble();
+        double distance = scanner.nextDouble();
+        double timePerMeter = scanner.nextDouble();
+        
+        double totalTime = distance * timePerMeter;
+        int numberOfDelays = (int) Math.floor(distance / 15);
+        double delayTime = numberOfDelays * 12.5;
+        
+        double finalTime = totalTime + delayTime;
+        
+        if (finalTime < recordTime) {
+            System.out.printf("Yes, he succeeded! The new world record is %.2f seconds.%n", finalTime);
+        } else {
+            double timeOver = finalTime - recordTime;
+            System.out.printf("No, he failed! He was %.2f seconds slower.%n", timeOver);
+        }
+        
+        scanner.close();
+    }
+}
